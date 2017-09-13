@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Index2";    
+}
+
+
+
+<body>
+    <div id="app-2">
+        <span v-bind:title="message">
+            Подержи курсор надо мной пару секунд,
+            чтобы увидеть динамически связанное значение title!
+        </span>
+    </div>
+</body>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
+<script src="~/scripts/VueJS/app2.js"></script>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        app2.message = "New value for message";
+
+        console.log("--------------------------------");
+        console.log(app2.tempField);
+    })
+</script>
+
