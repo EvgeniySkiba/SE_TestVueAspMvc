@@ -31,6 +31,14 @@
                        v-bind:key="item.id">
             </todo-item>
         </ol>
+
+        <div class="row">
+            -->
+            <test-item v-for="item in groceryList"
+                       v-bind:todo="item"
+                       v-bind:key="item.id">
+            </test-item>
+        </div>
     </div>
 </div>
 
