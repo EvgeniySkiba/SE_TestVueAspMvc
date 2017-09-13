@@ -1,18 +1,35 @@
 ﻿
 @{
-    ViewBag.Title = "Index2";    
+    ViewBag.Title = "Index2";
 }
 
 
 
 <body>
-    <div id="app-2">
-        <span v-bind:title="message">
-            Подержи курсор надо мной пару секунд,
-            чтобы увидеть динамически связанное значение title!
-        </span>
+    <div class="row">
+        <div id="app-2">
+            <span v-bind:title="message">
+                Подержи курсор надо мной пару секунд,
+                чтобы увидеть динамически связанное значение title!
+            </span>
+        </div>
+    </div>
+    <hr/>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-2">
+                <label>app3 </label>
+            </div>
+            <div class="col-xs-10">
+                <div id="app-3">
+                    <p v-if="seen">Сейчас меня видно</p>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
+
+
 
 
 
@@ -20,12 +37,19 @@
 <script src="~/scripts/VueJS/app2.js"></script>
 
 <script>
-
+    //когда документ загружен (без jquery )
     document.addEventListener('DOMContentLoaded', function () {
         app2.message = "New value for message";
 
         console.log("--------------------------------");
         console.log(app2.tempField);
+    })
+
+    var app3 = new Vue({
+        el: '#app-3',
+        data: {
+            seen: true
+        }
     })
 </script>
 

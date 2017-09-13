@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Index3";
+}
+
+<div class="body-content">
+    <div id="app-5">
+        <p>{{ message }}</p>
+        <button v-on:click="reverseMessage">Обратить порядок букв в сообщении</button>
+    </div>
+    <hr/>
+
+    <div id="app-6">
+        <ul>
+            <!-- Создаём экземпляр компонента todo-item -->
+            <todo-item></todo-item>
+        </ul>
+    </div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
+
+<script src="~/scripts/VueJS/app5.js"></script>
+<script src="~/scripts/VueJS/app6.js"></script>
