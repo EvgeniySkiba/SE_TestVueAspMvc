@@ -135,6 +135,7 @@
     <Content Include="scripts\VueJS\app2.js" />
     <Content Include="scripts\VueJS\app5.js" />
     <Content Include="scripts\VueJS\app6.js" />
+    <Content Include="scripts\VueJS\app7.js" />
     <Content Include="Web.config" />
     <Content Include="Views\Home\Index2.cshtml" />
     <Content Include="Views\Home\Index3.cshtml" />

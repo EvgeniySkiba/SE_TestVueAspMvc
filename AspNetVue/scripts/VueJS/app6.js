@@ -6,7 +6,7 @@ var myTask = Vue.component('todo-item', {
 var app6 = new Vue({
     el: '#app-6',
     data: {
-        message: 'Hello Vue.js!'
+       
     },
     methods: {
         reverseMessage: function (e) {
