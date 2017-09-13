@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@{
+    Layout = null;
+}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Bin</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.js"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+</body>
+
+<script>
+new Vue({
+  el: '#app',
+  data: function() {
+    return {
+      activeClass: 'active',
+	   ContactDetails:
+			[
+				{IsChecked:false,Name  :"Home"},
+				{IsChecked:false,Name  :"People"},
+				{IsChecked:false,Name  :"Wolrd"},
+			],
+	    Course:
+			[
+				{IsChecked:false,Name  :"Home"},
+				{IsChecked:false,Name  :"People"},
+				{IsChecked:false,Name  :"Wolrd"},
+			],
+		  
+      yards: [
+        {id: 1, name: 'test', selected: true},
+        {id: 2, name: 'test 2', selected: false},
+        {id: 3, name: 'test 3', selected: false},
+        {id: 4, name: 'test 4', selected: true}
+      ]
+    };
+  },
+
+  template: `
+    <div class ="list-of-yards">
+    <!--You cannot use v-for on the top-level element-->
+      <label v-for="yard in yards">
+        <input type="checkbox"
+        v-bind:class="yard.selected  ? activeClass : ''"
+        v-model="yard.selected"> {{yard.name}}>
+      </label>
+    </div>
+  `,
+});
+</script>
+
+<style>
+    label {
+        display: block;
+        width: 100%;
+    }
+
+    .active {
+        background: red;
+        height: 18px;
+        width: 18px;
+    }
+</style>
+
+</html>
+
