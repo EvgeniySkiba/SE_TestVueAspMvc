@@ -142,6 +142,8 @@
     <Content Include="Views\Home\Index2.cshtml" />
     <Content Include="Views\Home\Index3.cshtml" />
     <Content Include="Views\Todo\Conputed.cshtml" />
+    <Content Include="Views\Todo\Watchers.cshtml" />
+    <Content Include="Views\Todo\CheckBox.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />

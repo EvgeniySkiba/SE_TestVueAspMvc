@@ -18,5 +18,15 @@ namespace AspNetVue.Controllers
         {
             return View();
         }
+
+        public ActionResult Watchers()
+        {
+            return View();
+        }
+
+        public ActionResult CheckBox()
+        {
+            return View();
+        }
     }
 }
