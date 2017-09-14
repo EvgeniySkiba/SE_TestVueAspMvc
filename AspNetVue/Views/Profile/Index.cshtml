@@ -67,9 +67,10 @@
     <p>item in ContactDetails</p>
         <folder v-for="item in ContactDetails"
                  :label="item.Name"
-                :ischeck="item.IsChecked"
-                :value="item.Name"
-                :class="item.IsChecked  ? 'activeClass' : '' "
+                 :ischeck="item.IsChecked"
+                 :value="item.Name"
+                 v-bind:disabled="item.IsChecked"
+                v-bind:class="{ active: item.IsChecked }"
                 >
         </folder>
   
@@ -111,8 +112,8 @@
 
 
     Vue.component('folder', {
-        props: ['label','ischeck','value','class'],
-        template: '<div><input type="checkbox" name="vehicle" value="{{value}}" checked="{{ischeck}}" ><label class="class1 {{class}}" >{{label}}</label></div>'
+        props: ['label','ischeck','value','boxStatus'],
+        template: '<div><input type="checkbox" name="vehicle" value="{{value}}" checked="{{ischeck}}" ><label class="class1" >{{label}}</label></div>'
   
     })
     
