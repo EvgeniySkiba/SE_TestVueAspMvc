@@ -7,9 +7,14 @@
 <h2>Index</h2>
 <div id="profileApp">
 
+ 
+   
+    <h1 v-if="testArray.length > 0">Да</h1>
+
+
     <p>Profile</p>
     <ul id="example-1">
-        <li v-for="item in Profile">
+        <li v-show="Profile != null" v-for="item in Profile">
             {{ item.Name }}
         </li>
     </ul>
@@ -39,6 +44,8 @@
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
+
+
 <script>
 
     var model = @Html.Raw(Json.Encode(Model));
@@ -46,22 +53,44 @@
     var vm = new Vue({
         el: '#profileApp',
         created: function () {
-            sleep(1000);
-            // alert('here');
-         Profile = model;
-
+            sleep(2000);
+           
+       // Profile = model;
+        this.fetchV1IntermediaryUsers(model);
         },
 
-        data: {          
-            ContactDetails:model.ContactDetails ,
+        data: {   
+            testArray : [],
+    
+            ContactDetails : null,
             Course:model.Course ,
             Profile:model.Profile ,
             Rewards:model.Rewards ,
-            
+
+           
         },
         methods: {
+            submit: function() {
+                var self = this;
+                $.ajax({
+                    method: "POST",
+                    processData: false,
+                    contentType: 'application/json',
+                    dataType: 'json',
+                    data: JSON.stringify(self.$data)
+                });
+            },
+
+            fetchV1IntermediaryUsers: function(model)
+            {     
+                this.ContactDetails = model.ContactDetails;               
+            }
+
 
         }
+       
+
+
     })
 
 
