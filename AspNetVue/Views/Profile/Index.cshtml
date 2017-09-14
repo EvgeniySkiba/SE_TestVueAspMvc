@@ -4,16 +4,19 @@
     ViewBag.Title = "Index";
 }
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
+
 <h2>Index</h2>
 <div id="profileApp" v-cloak>
 
- 
-   
+
+
     <h1 v-if="testArray.length > 0">Да</h1>
 
 
     <p>Profile</p>
-    <ul id="example-1" >
+    <ul id="example-1">
         <li v-show="Profile != null" v-for="item in Profile">
             {{ item.Name }}
         </li>
@@ -31,7 +34,7 @@
         <li v-for="item in ContactDetails">
             {{ item.Name }}
         </li>
-    </ul>    
+    </ul>
 
     <p>Course</p>
     <ul id="example-1">
@@ -40,33 +43,61 @@
         </li>
     </ul>
 
+    <p>test </p>
+    <div class="form-group">
+        <my-component></my-component>
+    </div>
+    <div class="form-group">
+        <my-local-component></my-local-component>
+    </div>
+
 </div>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
+
+
+
+
 
 
 <script>
 
     var model = @Html.Raw(Json.Encode(Model));
+    //---------------------------------------------------------------
+
+    //-------------------------------------------------------------------
+
+
+
+    Vue.component('my-component', {
+        template: '<div>Пользовательский глобальный компонент!</div>'
+    })
+
+    var Child = {
+        template: '<div>Пользовательский локальный компонент!</div>'
+    }
 
     var vm = new Vue({
         el: '#profileApp',
         created: function () {
             sleep(2000);
-            console.log('ready'); 
-       // Profile = model;
-            this.fetchV1IntermediaryUsers(model);
+            console.log(model);
+            // Profile = model;
+            ///   this.fetchV1IntermediaryUsers(model);
 
         },
 
-        data: {   
-            testArray : [],    
-            ContactDetails: [],
+        data: {
+            testArray : [],
+            ContactDetails: [
+             {'Name' : 'Home',  'IsChecked': true},
+             {'Name' : 'People',  'IsChecked': false},
+             {'Name' : 'Wolrd',  'IsChecked': false}
+            ],
             Course:[] ,
             Profile:[] ,
-            Rewards:[] 
-           
+            Rewards:[]
+
         },
         methods: {
             submit: function() {
@@ -81,13 +112,16 @@
             },
 
             fetchV1IntermediaryUsers: function(model)
-            {     
-                this.ContactDetails = model.ContactDetails;               
+            {
+                this.ContactDetails = model.ContactDetails;
             }
+        },
 
-
+        components: {
+            // <my-component> будет доступен только в шаблоне родителя
+            'my-local-component': Child
         }
-       
+
 
 
     })
@@ -98,6 +132,5 @@
         while(new Date().getTime() < unixtime_ms + ms) {}
     }
 
-   // console.log(model.ContactDetails);
+    // console.log(model.ContactDetails);
 </script>
-
