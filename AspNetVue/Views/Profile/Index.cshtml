@@ -1,0 +1,75 @@
+﻿@model AspNetVue.Models.ProfileVM
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<div id="profileApp">
+
+    <p>Profile</p>
+    <ul id="example-1">
+        <li v-for="item in Profile">
+            {{ item.Name }}
+        </li>
+    </ul>
+
+    <p>Rewards</p>
+    <ul id="example-1">
+        <li v-for="item in Rewards">
+            {{ item.Name }}
+        </li>
+    </ul>
+
+    <p>ContactDetails</p>
+    <ul id="example-1">
+        <li v-for="item in ContactDetails">
+            {{ item.Name }}
+        </li>
+    </ul>    
+
+    <p>Course</p>
+    <ul id="example-1">
+        <li v-for="item in Course">
+            {{ item.Name }}
+        </li>
+    </ul>
+
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
+<script>
+
+    var model = @Html.Raw(Json.Encode(Model));
+
+    var vm = new Vue({
+        el: '#profileApp',
+        created: function () {
+            sleep(1000);
+            // alert('here');
+         Profile = model;
+
+        },
+
+        data: {          
+            ContactDetails:model.ContactDetails ,
+            Course:model.Course ,
+            Profile:model.Profile ,
+            Rewards:model.Rewards ,
+            
+        },
+        methods: {
+
+        }
+    })
+
+
+    function sleep(ms) {
+        var unixtime_ms = new Date().getTime();
+        while(new Date().getTime() < unixtime_ms + ms) {}
+    }
+
+   // console.log(model.ContactDetails);
+</script>
+
