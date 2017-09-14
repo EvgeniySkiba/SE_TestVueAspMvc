@@ -59,6 +59,15 @@
         <my-component4 data="hello3" value2="test value "></my-component4>
     </div>
 
+    <div class="form-group">
+        <my-component5 name="name" value="value" label="label value" checked="true"></my-component5><br />
+        <my-component5 name="name" value="value" label="label value" checked="false"></my-component5>
+    </div>
+
+
+    <div class="form-group">
+
+    </div>
 </div>
 
 
@@ -69,6 +78,11 @@
 
 
 <script>
+
+    var array = [ {Name: "Home", IsChecked: false},
+        {Name: "People", IsChecked: false},
+        {Name: "Wolrd", IsChecked: false}];
+
 
     var model = @Html.Raw(Json.Encode(Model));
     //---------------------------------------------------------------
@@ -90,6 +104,12 @@
     Vue.component('my-component4', {
         props: ['data','value2'],
         template: '<span>{{data}}</span>&nbsp;<span class="test">{{value2}}</span>'
+    })
+
+    
+    Vue.component('my-component5', {
+        props: ['name','value','label','checked'],
+        template: '<input type="checkbox" name="vehicle" value="{{value}}" checked="{{checked}}" ><label>{{label}}</label>'
     })
 
     var vm = new Vue({
