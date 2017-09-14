@@ -5,7 +5,7 @@
 }
 
 <h2>Index</h2>
-<div id="profileApp">
+<div id="profileApp" v-cloak>
 
  
    
@@ -13,7 +13,7 @@
 
 
     <p>Profile</p>
-    <ul id="example-1">
+    <ul id="example-1" >
         <li v-show="Profile != null" v-for="item in Profile">
             {{ item.Name }}
         </li>
@@ -54,19 +54,18 @@
         el: '#profileApp',
         created: function () {
             sleep(2000);
-           
+            console.log('ready'); 
        // Profile = model;
-        this.fetchV1IntermediaryUsers(model);
+            this.fetchV1IntermediaryUsers(model);
+
         },
 
         data: {   
-            testArray : [],
-    
-            ContactDetails : null,
-            Course:model.Course ,
-            Profile:model.Profile ,
-            Rewards:model.Rewards ,
-
+            testArray : [],    
+            ContactDetails: [],
+            Course:[] ,
+            Profile:[] ,
+            Rewards:[] 
            
         },
         methods: {
