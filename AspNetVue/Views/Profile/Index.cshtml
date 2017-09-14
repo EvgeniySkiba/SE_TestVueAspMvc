@@ -43,12 +43,20 @@
         </li>
     </ul>
 
-    <p>test </p>
+
     <div class="form-group">
         <my-component></my-component>
     </div>
     <div class="form-group">
         <my-local-component></my-local-component>
+    </div>
+
+    <div class="form-group">
+        <my-component3 data="hello"></my-component3>
+    </div>
+
+    <div class="my-component4">
+        <my-component4 data="hello3" value2="test value "></my-component4>
     </div>
 
 </div>
@@ -66,9 +74,6 @@
     //---------------------------------------------------------------
 
     //-------------------------------------------------------------------
-
-
-
     Vue.component('my-component', {
         template: '<div>Пользовательский глобальный компонент!</div>'
     })
@@ -76,6 +81,16 @@
     var Child = {
         template: '<div>Пользовательский локальный компонент!</div>'
     }
+
+    Vue.component('my-component3', {
+        props: ['data'],
+        template: '<p>{{data}}</p>'
+    })
+
+    Vue.component('my-component4', {
+        props: ['data','value2'],
+        template: '<span>{{data}}</span>&nbsp;<span class="test">{{value2}}</span>'
+    })
 
     var vm = new Vue({
         el: '#profileApp',
