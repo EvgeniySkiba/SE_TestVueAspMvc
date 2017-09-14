@@ -10,6 +10,23 @@
 <h2>Index</h2>
 <div id="profileApp" v-cloak>
 
+    <style>
+          .privacy_item i.on {
+        color: #35ca4a;
+    }
+
+          .privacy_item i {
+                margin-right: 5px;
+                color: #282828;
+                float: right;
+                cursor: pointer;
+            }
+
+          .activeClass{
+              background:red;
+          }
+
+    </style>
 
 
     <h1 v-if="testArray.length > 0">Да</h1>
@@ -48,8 +65,15 @@
 
    
     <p>item in ContactDetails</p>
-        <folder v-for="item in ContactDetails" :data="item.Name"></folder>
-    <p> --< tets emd </p>
+        <folder v-for="item in ContactDetails"
+                 :label="item.Name"
+                :ischeck="item.IsChecked"
+                :value="item.Name"
+                :class="item.IsChecked  ? 'activeClass' : '' "
+                >
+        </folder>
+  
+
     <hr />
 
     <div class="form-group current">
@@ -87,8 +111,9 @@
 
 
     Vue.component('folder', {
-        props: ['data'],
-        template: '<div>{{data}}</div>'
+        props: ['label','ischeck','value','class'],
+        template: '<div><input type="checkbox" name="vehicle" value="{{value}}" checked="{{ischeck}}" ><label class="class1 {{class}}" >{{label}}</label></div>'
+  
     })
     
    
@@ -122,8 +147,10 @@
     })
 
     Vue.component('my-component6', {
-        props: ['datavalue'],
-        template: '<p>{{datavalue}}</p>'
+        props: ['label','value','checked'],
+        template: '<input type="checkbox" name="vehicle" value="{{value}}" checked="{{checked}}" >'+
+            '<label >{{label}}</label>'
+  
     })
 
     var vm = new Vue({
