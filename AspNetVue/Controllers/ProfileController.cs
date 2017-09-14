@@ -14,8 +14,13 @@ namespace AspNetVue.Controllers
         public ActionResult Index()
         {
             ProfileVM profile = new ProfileVM();
-   
+
             return View(profile);
+        }
+
+        public ActionResult Index2()
+        {
+            return View();
         }
     }
 }

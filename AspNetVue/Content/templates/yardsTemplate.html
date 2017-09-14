@@ -1,0 +1,16 @@
+﻿
+<div>
+    <div class="row">1</div>
+    <div class="row">2</div>
+    <div class="row">3</div>
+    <div class="row">4</div>
+    <div class="row">5</div>
+    <div class="list-of-yards">
+        <!--You cannot use v-for on the top-level element-->
+        <label v-for="yard in yards">
+            <input type="checkbox"
+                   v-bind:class="yard.selected  ? activeClass : ''"
+                   v-model="yard.selected"> {{yard.name}}
+        </label>
+    </div>
+</div>

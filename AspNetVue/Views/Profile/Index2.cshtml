@@ -1,0 +1,95 @@
+﻿@model AspNetVue.Models.ProfileVM
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    .privacy_item i.on {
+        color: #35ca4a;
+    }
+
+    .privacy_item i {
+        margin-right: 5px;
+        color: #282828;
+        float: right;
+        cursor: pointer;
+    }
+
+    .activeClass {
+      height: 25px;
+    width: 25px;
+    }
+
+     .no-activeClass {
+      height: 10px;
+    width: 10px;
+    }
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
+
+<h2>Index</h2>
+
+<div id="profileApp" v-cloak>
+
+
+    <div v-for="item in ContactDetails">
+        <input type="checkbox"
+                name="vehicle"
+                value="value"
+                checked="{{item.IsChecked}}"
+                v-on:click="changeStatus"
+                v-bind:class="item.IsChecked  ? 'activeClass' : 'no-activeClass'"
+               v-model="item.IsChecked"
+            
+               >
+        
+        <label>{{item.Name}}</label>
+    </div>
+
+</div>
+
+<script>
+
+    // v-on:click="myFilter"
+   // v-bind:class="{ 'is-active' : isActive}"
+    var vm = new Vue({
+        el: '#profileApp',
+        created: function () {
+
+        },
+        data: {
+            ContactDetails:
+                [
+             {'Name' : 'Home',  'IsChecked': true},
+             {'Name' : 'People',  'IsChecked': false},
+             { 'Name': 'Wolrd', 'IsChecked': false },
+             {'Name' : 'Home2',  'IsChecked': false},
+             { 'Name': 'People2', 'IsChecked': true },
+             { 'Name': 'Wolrd2', 'IsChecked': true }
+                ]
+
+        },
+        methods: {
+            fetchV1IntermediaryUsers: function(model)
+            {
+                this.ContactDetails = model.ContactDetails;
+            },
+
+            changeStatus: function () {
+                this.IsChecked = !this.IsChecked;
+                console.log('click');
+            }
+        },
+        computed: {
+            classObject: function () {
+                return {
+                    active: this.IsChecked
+                }
+            }
+        }
+    })
+
+</script>

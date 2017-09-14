@@ -62,19 +62,22 @@
 
     <folder v-for="item in test" data="item"></folder>
   
+    <hr/>
+    <my-checkbox v-model="test" value="some value"></my-checkbox>
 
    
     <p>item in ContactDetails</p>
-        <folder v-for="item in ContactDetails"
-                 :label="item.Name"
-                 :ischeck="item.IsChecked"
-                 :value="item.Name"
-                 v-bind:disabled="item.IsChecked"
-                v-bind:class="{ active: item.IsChecked }"
-                >
-        </folder>
-  
 
+        <folder v-for="item in ContactDetails"
+                label="item.Name"
+                ischeck="item.IsChecked"
+                value="item.Name"
+                v-bind:disabled="item.IsChecked"
+                class="{active: true}"
+                v-bind:class="{ active: item.IsChecked }"
+                v-on:click="changeStatus" />
+
+    
     <hr />
 
     <div class="form-group current">
@@ -111,10 +114,31 @@
         {Name: "Wolrd", IsChecked: false}];
 
 
+    Vue.component('my-checkbox', {
+        model: {
+            prop: 'checked',
+            event: 'change'
+        },
+        props: {
+            // this allows using the `value` prop for a different purpose
+            value: String,
+            // use `checked` as the prop which take the place of `value`
+            checked: {
+                type: Number,
+                default: 0
+            }
+        },
+        // ...
+    })
+
     Vue.component('folder', {
         props: ['label','ischeck','value','boxStatus'],
-        template: '<div><input type="checkbox" name="vehicle" value="{{value}}" checked="{{ischeck}}" ><label class="class1" >{{label}}</label></div>'
-  
+        template: '<div><input type="checkbox" name="vehicle" value="{{value}}" checked="{{ischeck}}" ><label >{{label}}</label></div>',
+        methods: {
+        changeStatus: function(e) {
+            this.boxStatus = !this.boxStatus;
+        }
+    }
     })
     
    
